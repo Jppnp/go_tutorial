@@ -11,6 +11,7 @@ import (
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
+	"gorm.io/gorm/schema"
 )
 
 var DB *gorm.DB
@@ -30,6 +31,9 @@ func InitDB() {
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{
 		PrepareStmt: true,
 		Logger:      loggerDb,
+		NamingStrategy: schema.NamingStrategy{
+			TablePrefix: "go_tutorial.",
+		},
 	})
 	exception.PanicLog(err)
 	DB = db

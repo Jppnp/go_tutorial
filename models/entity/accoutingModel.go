@@ -7,13 +7,14 @@ import (
 )
 
 type Accounting struct {
-	Id        uint            `gorm:"primaryKey,autoIncrement" json:"id"`
-	Amount    decimal.Decimal `gorm:"type:decimal;not null" json:"amount"`
-	Balance   decimal.Decimal `gorm:"type:decimal;not null" json:"balance"`
-	UserId    uint            `gorm:"not null" json:"userId"`
-	User      User            `gorm:"foreignKey:UserId;references:ID" json:"-"`
-	CreatedAt time.Time       `gorm:"autoCreateTime:false"`
-	UpdatedAt time.Time       `gorm:"autoCreateTime:false"`
+	Id         uint            `gorm:"primaryKey,autoIncrement" json:"id"`
+	Amount     decimal.Decimal `gorm:"type:decimal;not null" json:"amount"`
+	Balance    decimal.Decimal `gorm:"type:decimal;not null" json:"balance"`
+	UserId     uint            `gorm:"not null" json:"userId"`
+	User       User            `gorm:"foreignKey:UserId;references:ID" json:"-"`
+	CreatedAt  time.Time       `gorm:"autoCreateTime:false"`
+	UpdatedAt  time.Time       `gorm:"autoCreateTime:false"`
+	OutdatedBy *uint           `gorm:"type:int;null" json:"outdatedBy"`
 }
 
 func (Accounting) TableName() string {

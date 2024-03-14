@@ -8,4 +8,8 @@ import (
 
 func SetupController(router *gin.Engine) {
 	router.GET("healthcheck", businessflow.HealthcheckBusineeFlow)
+	apiRoutes := router.Group("/api")
+	{
+		apiRoutes.POST("users/create", businessflow.CreateUserBusinessFlow)
+	}
 }
