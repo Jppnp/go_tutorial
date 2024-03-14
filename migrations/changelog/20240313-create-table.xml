@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <changeSet id="create-table" author="jab">
+        <createTable tableName="users" schemaName="go_tutorial">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" />
+            </column>
+            <column name="user_name" type="varchar(255)">
+                <constraints notNullConstraintName="userNameNotNull" />
+            </column>
+        </createTable>
+        <createTable tableName="accounting" schemaName="go_tutorial">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" />
+            </column>
+            <column name="amount" type="decimal"></column>
+            <column name="balance" type="decimal"></column>
+            <column name="user_id" type="bigint"></column>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="accounting" baseColumnNames="user_id"
+            constraintName="fk_accounting" referencedTableName="users" referencedColumnNames="id" />
+    </changeSet>
+</databaseChangeLog>

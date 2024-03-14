@@ -1,0 +1,11 @@
+{
+    "DB_CONNECTION": {
+      "CONNECTION_STRING": "host=localhost user=postgres dbname=postgres port=5432 sslmode=disable",
+      "MAX_POOL": 10,
+      "IDLE_POOL": 5,
+      "LIFE_TIME": 30000
+    },
+    "JWT_SECRET": "",
+    "TOKEN_EXPIRATION": 30
+  }
+  

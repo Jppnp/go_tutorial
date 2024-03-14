@@ -1,0 +1,15 @@
+version: '3'
+services:
+  gotutorial:
+    container_name: 'gotutorial'
+    build:
+      dockerfile: Dockerfile
+      context: .
+    ports:
+      - "8391:8080"
+    external_links:
+      - postgres:postgres
+    entrypoint:   
+      - bash
+      - ./run.sh
+    network_mode: bridge

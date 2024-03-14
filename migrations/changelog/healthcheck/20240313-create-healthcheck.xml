@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+        <changeSet id="create-healthcheck" author="jab">
+            <createTable tableName="healthcheck" schemaName="go_tutorial">
+                <column name="id" type="int">
+                    <constraints primaryKey="true"/>
+                </column>
+                <column name="message" type="varchar(255)"></column>
+            </createTable>
+            <insert tableName="healthcheck" schemaName="go_tutorial">
+                <column name="id" value="1"></column>
+                <column name="message" value="I'm fine, Thank you :)"></column>
+            </insert>
+        </changeSet>
+</databaseChangeLog>
